@@ -9,7 +9,7 @@ var config = require('./../config').js;
 
 
 const build = (bundle) => {
-	bundle.bundle()
+	return bundle.bundle()
 		.on('error', (error) => {
 			gutil.log("Browserify Error");
 			gutil.log(error.toString());
@@ -31,13 +31,15 @@ const bundleConfig = _.assign({}, watchify.args, {
 // Tasks
 gulp.task('js', () => {
 	const bundle = browserify(bundleConfig);
-	build(bundle);
+	return build(bundle);
 });
 
 gulp.task('js:watch', () => {
 	const bundle = browserify(bundleConfig);
 	const watcher = watchify(bundle);
 	watcher.on('update', () => build(watcher));
+	watcher.on('log', gutil.log);
+	return build(watcher);
 });
 
 

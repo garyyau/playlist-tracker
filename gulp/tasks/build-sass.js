@@ -10,7 +10,7 @@ var config = require('./../config').sass;
 // Tasks
 gulp.task('sass', () => {
 	gulp.src(config.src)
-		.pipe(sass())
+		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer('last 2 versions'))
 		.pipe(concat(config.outputName))
 		.pipe(minify())
@@ -18,7 +18,7 @@ gulp.task('sass', () => {
 });
 
 gulp.task('sass:watch', () => {
-	gulp.watch(config.src, ['build-sass']);
+	gulp.watch(config.src, ['sass']);
 });
 
 

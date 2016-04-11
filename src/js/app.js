@@ -1,5 +1,11 @@
 var angular = require('angular');
 
 
-var app = angular.module("PlaylistTrackerEx", []);
-app.controller("PlaylistController");
+// Define the Angular App
+var dependencies = [];
+var app = angular.module('PlaylistTrackerEx', dependencies);
+
+// Define Controllers in the App
+// app.controller('PlaylistController');
+
+angular.bootstrap(document, ['PlaylistTrackerEx']);
