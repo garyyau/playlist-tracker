@@ -3,10 +3,14 @@ var gulp = require('gulp');
 var requireDir = require('require-dir');
 
 
-const tasks = requireDir('./gulp/tasks');
-const taskList = _.keys(tasks);
-gulp.task('default', taskList);
+const modules = requireDir('./gulp/tasks');
 
-const watchers = requireDir('./gulp/watcher-tasks');
-const watcherList = _.keys(watchers);
-gulp.task('watch', watcherList);
+const moduleTasks = _.map(modules, (module) => module.tasks);
+const tasks = _.flatten(moduleTasks);
+
+const moduleWatchers = _.map(modules, (module) => module.watchers);
+const watchers = _.flatten(moduleWatchers);
+
+
+gulp.task('default', tasks);
+gulp.task('watch', watchers);

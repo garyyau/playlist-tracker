@@ -8,17 +8,7 @@ var watchify = require('watchify');
 var config = require('./../config').js;
 
 
-const bundleConfig = _.assign({}, watchify.args, {
-	entries: [config.main],
-	transform: [['babelify', {
-		presets: ['es2015'],
-	}]],
-	debug: true,
-	bundleExternal: false,
-});
-const bundle = browserify(bundleConfig);
-
-const build = () => {
+const build = (bundle) => {
 	bundle.bundle()
 		.on('error', (error) => {
 			gutil.log("Browserify Error");
@@ -28,9 +18,28 @@ const build = () => {
 		.pipe(gulp.dest(config.dest));
 };
 
+const bundleConfig = _.assign({}, watchify.args, {
+	entries: [config.main],
+	transform: [['babelify', {
+		presets: ['es2015'],
+	}]],
+	debug: true,
+	bundleExternal: false,
+});
 
-gulp.task('build-js', build());
+
+// Tasks
+gulp.task('js', () => {
+	const bundle = browserify(bundleConfig);
+	build(bundle);
+});
+
+gulp.task('js:watch', () => {
+	const bundle = browserify(bundleConfig);
+	const watcher = watchify(bundle);
+	watcher.on('update', () => build(watcher));
+});
 
 
-module.exports.bundle = bundle;
-module.exports.build = build;
+module.exports.tasks = ['js'];
+module.exports.watchers = ['js:watch'];
