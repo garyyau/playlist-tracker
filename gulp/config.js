@@ -1,4 +1,4 @@
-var dest = './';
+var dest = './deploy';
 var src = './src';
 
 
