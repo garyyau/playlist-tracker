@@ -1,0 +1,21 @@
+{
+  "name": "playlist-tracker-extension",
+  "description": "\"\"",
+  "main": "js/app/app.js",
+  "authors": [
+    "Gary Yau <gyau88@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/garyyau/playlist-tracker-extension",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mui": "^0.5.0"
+  }
+}
