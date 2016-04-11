@@ -1,6 +1,5 @@
 var angular = require('angular');
 
-
 // Define the Angular App
 var dependencies = [];
 var app = angular.module('PlaylistTrackerEx', dependencies);

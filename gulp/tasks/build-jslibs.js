@@ -4,12 +4,13 @@ var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var fs = require('fs');
 
+
 var config = require('./../config').jslibs;
 
 
 // Tasks
 gulp.task('jslibs', () => {
-	const pkg = fs.readFileSync('./package.json', 'utf-8');
+	const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 	const libs = _.keys(pkg.dependencies);
 	const bundle = browserify({ debug: true, require: libs });
 
