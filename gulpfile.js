@@ -13,4 +13,4 @@ const watchers = _.flatten(moduleWatchers);
 
 
 gulp.task('default', tasks);
-gulp.task('watch', watchers);
+gulp.task('watch', _.concat(['default'], watchers));

@@ -3,6 +3,12 @@ var src = './src';
 
 
 module.exports = {
+	jade: {
+		src: [
+			`${src}/jade/**/*.jade`,
+		],
+		dest: `${dest}/`,
+	},
 	sass: {
 		src: [
 			`${src}/scss/**/*.scss`,

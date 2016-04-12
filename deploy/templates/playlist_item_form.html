@@ -1,11 +1,1 @@
-<div class="playlist-item-form">
-	<form>
-		<label>Name</label>
-			<input type="text" name="name" ng-model="name" />
-		<label>URL</label>
-			<input type="text" name="url" ng-model="url" />
-
-		<input type="hidden" ng-model="id" />
-		<button ng-click="save()">Save</button>
-	</form>
-</div>
+<form class="playlist-item-form"><div layout="column"><md-input-container class="md-block"><label>Name</label><input type="text" name="name" required="required" ng-model="PlaylistItemFormService.name"/></md-input-container><md-input-container class="md-block"><label>URL</label><input type="text" name="url" required="required" ng-model="PlaylistItemFormService.url"/></md-input-container><input type="hidden" ng-model="PlaylistItemFormService.id"/><md-button ng-click="save()" class="md-raised md-primary">Save</md-button><md-button ng-click="clear()">Clear</md-button></div></form>

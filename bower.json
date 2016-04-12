@@ -16,6 +16,9 @@
     "tests"
   ],
   "dependencies": {
-    "mui": "^0.5.0"
+    "angular-material": "^1.0.7",
+    "angular": "^1.5.3",
+    "material-design-iconic-font": "^2.2.0",
+    "reset-css": "^2.0.2011012603"
   }
 }

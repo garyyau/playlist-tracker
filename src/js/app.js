@@ -1,10 +1,21 @@
 var _ = require('lodash');
-var angular = require('angular');
+var palettes = require('./palettes');
 
 
 // Define the Angular App
-var dependencies = [];
+var dependencies = ['ngMaterial'];
 var app = angular.module('PlaylistTrackerEx', dependencies);
+
+// Configuration
+app.config(($mdThemingProvider) => {
+	_.forOwn(palettes, (value, key) => {
+		$mdThemingProvider.definePalette(key, value);
+	});
+
+	$mdThemingProvider.theme('default')
+					  .primaryPalette('turquoise')
+					  .accentPalette('cloudburst');
+});
 
 // Define the Controllers
 app.controller('PlaylistController', require('./PlaylistController'));

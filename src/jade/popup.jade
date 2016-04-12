@@ -1,0 +1,48 @@
+doctype html
+html(ng-csp='')
+	head
+		title Playlist Tracker
+		script(type='text/javascript', src='js/libs.js')
+		script(type='text/javascript', src='bower_components/angular/angular.js')
+		script(type='text/javascript', src='bower_components/angular-animate/angular-animate.js')
+		script(type='text/javascript', src='bower_components/angular-aria/angular-aria.js')
+		script(type='text/javascript', src='bower_components/angular-messages/angular-messages.js')
+		script(type='text/javascript', src='bower_components/angular-material/angular-material.js')
+		link(rel='stylesheet', type='text/css', href='bower_components/reset-css/reset.css')
+		link(rel='stylesheet', type='text/css', href='bower_components/angular-material/angular-	material.css')
+		link(rel='stylesheet', type='text/css', href='bower_components/material-design-iconic-font/	dist/css/material-design-iconic-font.min.css')
+		link(rel='stylesheet', type='text/css', href='css/style.css')
+	body(ng-controller='PlaylistController as playlist')
+		.container(layout='column')
+			md-toolbar
+				.md-toolbar-tools
+					md-button.md-icon-button(
+						aria-label='Back',
+						ng-if='!playlist.visiblePlaylist',
+						ng-click='playlist.displayPlaylist()'
+					)
+						md-tooltip(md-direction='bottom') Back to Playlist
+						i.zmdi.zmdi-arrow-left
+					span(flex='') Playlist Tracker Ex
+					md-button.md-icon-button(
+						aria-label='Add',
+						ng-if='playlist.visiblePlaylist',
+						ng-click='playlist.displaySeriesForm()'
+					)
+						md-tooltip(md-direction='bottom') Add Playlist Item
+						i.zmdi.zmdi-plus
+			md-content
+				.playlist-container(ng-if='playlist.visiblePlaylist')
+					md-list(ng-cloak)
+						md-subheader.md-no-sticky Series
+						md-list-item(ng-repeat='item in playlist.listItems')
+							div
+								| {{ item.id }} | {{ item.name }} | {{ item.url }}
+								.md-secondary(ng-click='playlist.editItem(item)')
+									md-tooltip(md-direction='left') Edit {{ item.name }}
+									i.zmdi.zmdi-edit
+
+				.series-form(ng-if='playlist.visibleSeriesForm', layout-padding)
+					playlist-item-form(item='playlist.selectedItem')
+
+		script(type='text/javascript', src='js/bundle.js')

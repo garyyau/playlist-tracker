@@ -23,7 +23,7 @@ class PlaylistService {
 	}
 	save(itemData) {
 		if (itemData.id) {
-			const item = this.get(item.id);
+			const item = this.get(itemData.id);
 			item.update(itemData);
 			return;
 		}

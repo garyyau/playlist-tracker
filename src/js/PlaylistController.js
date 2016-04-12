@@ -8,6 +8,8 @@ class PlaylistController {
 	) {
 		this.listItems = PlaylistService.list();
 		this.selectedItem = null;
+		this.visiblePlaylist = true;
+		this.visibleSeriesForm = false;
 
 		this.PlaylistItemFormService = PlaylistItemFormService;
 	}
@@ -15,8 +17,16 @@ class PlaylistController {
 		console.log("Adding new Item");
 	}
 	editItem(item) {
-		console.log(item);
-		this.PlaylistItemFormService.setItem(item);
+		this.PlaylistItemFormService.setValues(item);
+		this.displaySeriesForm();
+	}
+	displayPlaylist() {
+		this.visiblePlaylist = true;
+		this.visibleSeriesForm = false;
+	}
+	displaySeriesForm() {
+		this.visiblePlaylist = false;
+		this.visibleSeriesForm = true;
 	}
 }
 
