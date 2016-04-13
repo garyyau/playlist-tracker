@@ -1,3 +1,5 @@
+@import '_colors';
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -6,4 +8,22 @@ html, body {
 }
 .container {
 	width: 375px;
+	height: 100%;
+	border: 2px solid $colors-primary;
+}
+.toolbar {
+	height: 48px;
+	background: white;
+	background: -moz-linear-gradient(top, white 40%, $colors-white-shadow 100%);
+	background: -webkit-linear-gradient(top, white 40%, $colors-white-shadow 100%);
+	background: linear-gradient(to bottom, white 40%, $colors-white-shadow 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='$colors-white-shadow',GradientType=0);
+
+	.backdrop {
+		width: 100%;
+		height: 100%;
+		background-image: url('../images/header-bg-left-render.png');
+		background-position: left top;
+		background-repeat: no-repeat;
+	}
 }

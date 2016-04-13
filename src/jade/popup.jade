@@ -14,8 +14,8 @@ html(ng-csp='')
 		link(rel='stylesheet', type='text/css', href='css/style.css')
 	body(ng-controller='PlaylistController as playlist')
 		.container(layout='column')
-			md-toolbar
-				.md-toolbar-tools
+			.toolbar
+				.backdrop
 					md-button.md-icon-button(
 						aria-label='Back',
 						ng-if='!playlist.visiblePlaylist',
