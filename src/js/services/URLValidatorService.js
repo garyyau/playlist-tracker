@@ -3,7 +3,6 @@ class URLValidatorService {
 		this.$http = $http;
 	}
 	isValid(url) {
-		console.log(url);
 		return this.$http.get(url).then(() => true, () => false);
 	}
 }

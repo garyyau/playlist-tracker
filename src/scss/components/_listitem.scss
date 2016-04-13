@@ -1,0 +1,68 @@
+@import './../_variables';
+
+
+.matxd-list-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 0 16px;
+	min-height: 76px;
+	width: 100%;
+
+	&:hover {
+		background-color: darken(mui-color('white'), 5%);
+		cursor: pointer;
+	}
+	&.matxd-sm {
+		min-height: 60px;
+
+		.matxd-avatar {
+			width: 36px;
+			height: 36px;
+		}
+		.matxd-list-item-text {
+			p.matxd-list-text-primary {
+				font-size: 13px;
+				line-height: 17px;
+			}
+			p {
+				font-size: 12px;
+				line-height: 14px;
+			}
+		}
+	}
+	.matxd-avatar {
+		overflow: hidden;
+		box-sizing: content-box;
+		margin-right: 20px;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: url('https://i.kinja-img.com/gawker-media/image/upload/unnbgkdbmsszmazgxkmr.jpg');
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	.matxd-list-item-text {
+		flex: 1;
+		overflow: hidden;
+
+		p.matxd-list-text-primary {
+			color: mui-color('black-alpha-87');
+			font-size: 16px;
+			line-height: 20px;
+		}
+		p {
+			overflow: hidden;
+			margin-bottom: 0px;
+			color: mui-color('black-alpha-54');
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: 14px;
+		}
+	}
+}
+.matxd-2-line {
+
+}

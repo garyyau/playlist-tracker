@@ -1,9 +1,17 @@
-md-list(flex)
-	md-subheader Series
-	md-list-item.md-2-line(ng-repeat='item in playlist.listItems', ng-click='null')
-		div.md-list-item-text(layout='column')
-			h3 {{ item.name }}
-			p {{ item.url }}
-			.md-secondary(ng-click='playlist.editItem(item)')
-				md-tooltip(md-direction='left') Edit {{ item.name }}
-				i.zmdi.zmdi-edit
+.playlist-container
+	.matxd-list-item.matxd-sm(
+		ng-repeat='item in playlist.listItems',
+		ng-click='null'
+	)
+		.matxd-avatar
+		.matxd-list-item-text
+			p.matxd-list-text-primary(ng-bind='item.name')
+			p(ng-bind='item.url')
+
+	//- md-list-item.md-2-line(ng-repeat='item in playlist.listItems', ng-click='null')
+	//- 	div.md-list-item-text(layout='column')
+	//- 		h3 {{ item.name }}
+	//- 		p {{ item.url }}
+	//- 		.md-secondary(ng-click='playlist.editItem(item)')
+	//- 			md-tooltip(md-direction='left') Edit {{ item.name }}
+	//- 			i.zmdi.zmdi-edit

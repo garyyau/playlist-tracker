@@ -1,11 +1,28 @@
 form.playlist-item-form
-	div(layout='column')
-		md-input-container.md-block
-			label Name
-			input(type='text', name='name', required, ng-model='PlaylistItemFormService.name')
-		md-input-container.md-block
-			label URL
-			input(type='text', name='url', required, ng-model='PlaylistItemFormService.url')
-		input(type='hidden', ng-model='PlaylistItemFormService.id')
-		md-button.md-raised.md-primary(ng-click='save()') Save
-		md-button(ng-click='clear()') Clear
+	mui-input(
+		ng-model='PlaylistItemFormService.name',
+		label='Name',
+		float-label,
+		required
+	)
+	mui-input(
+		ng-model='PlaylistItemFormService.url',
+		label='URL',
+		float-label,
+		required
+	)
+
+	input(type='hidden', ng-model='PlaylistItemFormService.id')
+
+	.form-controls
+		mui-button(
+			ng-click='clear()',
+			variant='flat',
+			size='small'
+		) Clear
+		mui-button(
+			ng-click='save()',
+			color='primary',
+			variant='raised',
+			size='small'
+		) Save

@@ -19,13 +19,7 @@ class PlaylistItemForm {
 	}
 	save() {
 		const url = this.PlaylistItemFormService.url;
-		this.URLValidatorService.isValid(url).then((valid) => {
-			console.log(valid);
-			return;
-		});
-		return;
 		const itemData = this.PlaylistItemFormService.getValues();
-		console.log(itemData);
 		this.PlaylistService.save(itemData);
 		this.clear();
 	}

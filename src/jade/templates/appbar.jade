@@ -1,0 +1,17 @@
+mui-appbar#appbar
+	.backdrop
+	mui-button.mui--pull-left(
+		size='small',
+		color='primary',
+		ng-if='!playlist.visiblePlaylist',
+		ng-click='playlist.displayPlaylist()'
+	)
+		i.zmdi.zmdi-arrow-left
+	h4.mui--appbar-height.mui--appbar-line-height Playlist Tracker Ex
+	mui-button.mui--pull-right(
+		size='small',
+		color='primary',
+		ng-if='playlist.visiblePlaylist',
+		ng-click='playlist.addItem()'
+	)
+		i.zmdi.zmdi-plus

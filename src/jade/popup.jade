@@ -2,42 +2,23 @@ doctype html
 html(ng-csp='')
 	head
 		title Playlist Tracker
+
 		script(type='text/javascript', src='js/libs.js')
 		script(type='text/javascript', src='bower_components/angular/angular.js')
-		script(type='text/javascript', src='bower_components/angular-animate/angular-animate.js')
-		script(type='text/javascript', src='bower_components/angular-aria/angular-aria.js')
-		script(type='text/javascript', src='bower_components/angular-messages/angular-messages.js')
-		script(type='text/javascript', src='bower_components/angular-material/angular-material.js')
+		script(type='text/javascript', src='bower_components/mui/packages/cdn/angular/mui-angular.min.js')
+
 		link(rel='stylesheet', type='text/css', href='bower_components/reset-css/reset.css')
-		link(rel='stylesheet', type='text/css', href='bower_components/angular-material/angular-	material.css')
-		link(rel='stylesheet', type='text/css', href='bower_components/material-design-iconic-font/	dist/css/material-design-iconic-font.min.css')
+		link(rel='stylesheet', type='text/css', href='bower_components/mui/packages/cdn/css/mui.min.css')
+		link(rel='stylesheet', type='text/css', href='bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css')
 		link(rel='stylesheet', type='text/css', href='css/style.css')
 	body(ng-controller='PlaylistController as playlist')
 		.container(layout='column')
-			.toolbar
-				.backdrop
-					md-button.md-icon-button(
-						aria-label='Back',
-						ng-if='!playlist.visiblePlaylist',
-						ng-click='playlist.displayPlaylist()'
-					)
-						md-tooltip(md-direction='bottom') Back to Playlist
-						i.zmdi.zmdi-arrow-left
-					span(flex='') Playlist Tracker Ex
-					md-button.md-icon-button(
-						aria-label='Add',
-						ng-if='playlist.visiblePlaylist',
-						ng-click='playlist.addItem()'
-					)
-						md-tooltip(md-direction='bottom') Add Playlist Item
-						i.zmdi.zmdi-plus
-			md-content
-				.playlist-container(
-					ng-if='playlist.visiblePlaylist',
-					ng-include='"templates/playlist_display.html"'
-				)
-
-				.series-form(ng-if='playlist.visibleSeriesForm', layout-padding)
-					playlist-item-form(item='playlist.selectedItem')
+			ng-include(src='"templates/appbar.html"')
+			ng-include(
+				src='"templates/playlist_display.html"',
+				ng-if='playlist.visiblePlaylist'
+			)
+			.content-container(ng-if='playlist.visibleSeriesForm', layout-padding)
+				playlist-item-form(item='playlist.selectedItem')
 
 		script(type='text/javascript', src='js/bundle.js')
