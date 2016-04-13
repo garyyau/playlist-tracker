@@ -6,11 +6,11 @@ class PlaylistController {
 		PlaylistService,
 		PlaylistItemFormService
 	) {
-		this.listItems = PlaylistService.list();
 		this.selectedItem = null;
 		this.visiblePlaylist = true;
 		this.visibleSeriesForm = false;
 
+		this.PlaylistService = PlaylistService;
 		this.PlaylistItemFormService = PlaylistItemFormService;
 	}
 	addItem() {
@@ -20,6 +20,9 @@ class PlaylistController {
 	editItem(item) {
 		this.PlaylistItemFormService.setValues(item);
 		this.displaySeriesForm();
+	}
+	getListItems() {
+		return this.PlaylistService.list();
 	}
 	displayPlaylist() {
 		this.visiblePlaylist = true;

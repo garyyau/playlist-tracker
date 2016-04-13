@@ -17,13 +17,32 @@ class PlaylistItem {
 }
 
 class PlaylistService {
-	constructor() {
+	constructor($rootScope) {
 		this.uid = 1;
 		this.items = [];
+		this.load();
+		this.$rootScope = $rootScope;
 	}
-	save(itemData) {
+	load() {
+		try {
+			chrome.storage.sync.get('playlist', (storage) => {
+				this.$rootScope.$apply(() => {
+					this.items = JSON.parse(storage['playlist']);
+					console.log(this.items);
+				});
+			});
+		} catch(e) {
+			console.log("Failed loading data.", e);
+		}
+	}
+	save() {
+		chrome.storage.sync.set({playlist: JSON.stringify(this.items)}, () => {
+			console.log("Saved Items: ", this.items);
+		});
+	}
+	saveItem(itemData) {
 		if (itemData.id) {
-			const item = this.get(itemData.id);
+			const item = this.getItem(itemData.id);
 			item.update(itemData);
 			return;
 		}
@@ -31,18 +50,19 @@ class PlaylistService {
 		itemData.id = this.uid++;
 		item.update(itemData);
 		this.items.push(item);
+		this.save();
 	}
-	get(id) {
+	getItem(id) {
 		return _.find(this.items, {id: id});
 	}
-	delete(id) {
+	deleteItem(id) {
 		_.remove(this.items, {id: id});
 	}
 	list() {
 		return this.items;
 	}
 }
-PlaylistService.$inject = [];
+PlaylistService.$inject = ['$rootScope'];
 
 
 module.exports = PlaylistService;

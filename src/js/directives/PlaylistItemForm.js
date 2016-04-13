@@ -20,7 +20,7 @@ class PlaylistItemForm {
 	save() {
 		const url = this.PlaylistItemFormService.url;
 		const itemData = this.PlaylistItemFormService.getValues();
-		this.PlaylistService.save(itemData);
+		this.PlaylistService.saveItem(itemData);
 		this.clear();
 	}
 	link($scope) {

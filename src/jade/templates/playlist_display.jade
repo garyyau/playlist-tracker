@@ -1,6 +1,6 @@
 .playlist-container
 	.matxd-list-item.matxd-sm(
-		ng-repeat='item in playlist.listItems',
+		ng-repeat='item in playlist.getListItems()',
 		ng-click='null'
 	)
 		.matxd-avatar
