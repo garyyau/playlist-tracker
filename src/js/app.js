@@ -23,6 +23,7 @@ app.controller('PlaylistController', require('./PlaylistController'));
 // Define the Services
 app.service('PlaylistService', require('./services/PlaylistService'));
 app.service('PlaylistItemFormService', require('./services/PlaylistItemFormService'));
+app.service('URLValidatorService', require('./services/URLValidatorService'));
 
 // Define the Directives
 app.directive('playlistItemForm', require('./directives/PlaylistItemForm'));

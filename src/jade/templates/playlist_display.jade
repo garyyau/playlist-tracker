@@ -1,0 +1,9 @@
+md-list(flex)
+	md-subheader Series
+	md-list-item.md-2-line(ng-repeat='item in playlist.listItems', ng-click='null')
+		div.md-list-item-text(layout='column')
+			h3 {{ item.name }}
+			p {{ item.url }}
+			.md-secondary(ng-click='playlist.editItem(item)')
+				md-tooltip(md-direction='left') Edit {{ item.name }}
+				i.zmdi.zmdi-edit

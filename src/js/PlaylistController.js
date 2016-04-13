@@ -14,7 +14,8 @@ class PlaylistController {
 		this.PlaylistItemFormService = PlaylistItemFormService;
 	}
 	addItem() {
-		console.log("Adding new Item");
+		this.PlaylistItemFormService.clear();
+		this.displaySeriesForm();
 	}
 	editItem(item) {
 		this.PlaylistItemFormService.setValues(item);

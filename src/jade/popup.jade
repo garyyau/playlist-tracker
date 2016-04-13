@@ -27,20 +27,15 @@ html(ng-csp='')
 					md-button.md-icon-button(
 						aria-label='Add',
 						ng-if='playlist.visiblePlaylist',
-						ng-click='playlist.displaySeriesForm()'
+						ng-click='playlist.addItem()'
 					)
 						md-tooltip(md-direction='bottom') Add Playlist Item
 						i.zmdi.zmdi-plus
 			md-content
-				.playlist-container(ng-if='playlist.visiblePlaylist')
-					md-list(ng-cloak)
-						md-subheader.md-no-sticky Series
-						md-list-item(ng-repeat='item in playlist.listItems')
-							div
-								| {{ item.id }} | {{ item.name }} | {{ item.url }}
-								.md-secondary(ng-click='playlist.editItem(item)')
-									md-tooltip(md-direction='left') Edit {{ item.name }}
-									i.zmdi.zmdi-edit
+				.playlist-container(
+					ng-if='playlist.visiblePlaylist',
+					ng-include='"templates/playlist_display.html"'
+				)
 
 				.series-form(ng-if='playlist.visibleSeriesForm', layout-padding)
 					playlist-item-form(item='playlist.selectedItem')
