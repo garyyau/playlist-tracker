@@ -6,7 +6,8 @@ form.playlist-item-form
 		required
 	)
 	mui-input(
-		ng-model='PlaylistItemFormService.url',
+		ng-model='PlaylistItemFormService.urlString',
+		ng-change='PlaylistItemFormService.createURL(PlaylistItemFormService.urlString)'
 		label='URL',
 		float-label,
 		required

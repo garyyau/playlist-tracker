@@ -13,6 +13,7 @@ class PlaylistItemForm {
 
 		this.PlaylistService = PlaylistService;
 		this.PlaylistItemFormService = PlaylistItemFormService;
+		console.log(this.PlaylistItemFormService.URLParserService);
 		this.URLParserService = URLParserService;
 		this.URLValidatorService = URLValidatorService;
 	}
