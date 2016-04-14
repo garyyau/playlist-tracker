@@ -6,6 +6,8 @@ class PlaylistItem {
 		this.id = null;
 		this.name = null;
 		this.url = null;
+		this.season = null;
+		this.episode = null;
 	}
 	update(data) {
 		_.forOwn(data, (value, key) => {
@@ -28,7 +30,6 @@ class PlaylistService {
 			chrome.storage.sync.get('playlist', (storage) => {
 				this.$rootScope.$apply(() => {
 					this.items = JSON.parse(storage['playlist']);
-					console.log(this.items);
 				});
 			});
 		} catch(e) {
@@ -57,6 +58,7 @@ class PlaylistService {
 	}
 	deleteItem(id) {
 		_.remove(this.items, {id: id});
+		this.save();
 	}
 	list() {
 		return this.items;

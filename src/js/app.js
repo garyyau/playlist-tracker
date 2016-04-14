@@ -9,8 +9,9 @@ var app = angular.module('PlaylistTrackerEx', dependencies);
 app.controller('PlaylistController', require('./PlaylistController'));
 
 // Define the Services
-app.service('PlaylistService', require('./services/PlaylistService'));
 app.service('PlaylistItemFormService', require('./services/PlaylistItemFormService'));
+app.service('PlaylistService', require('./services/PlaylistService'));
+app.service('URLParserService', require('./services/URLParserService'));
 app.service('URLValidatorService', require('./services/URLValidatorService'));
 
 // Define the Directives

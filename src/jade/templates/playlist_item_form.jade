@@ -11,6 +11,9 @@ form.playlist-item-form
 		float-label,
 		required
 	)
+	.matxd-parser
+		mui-checkbox.matxd-parser-toggle(ng-model='hasSeason', label='Season')
+		span.matxd-parser-text(ng-bind='PlaylistItemFormService.url', ng-if='hasSeason')
 
 	input(type='hidden', ng-model='PlaylistItemFormService.id')
 

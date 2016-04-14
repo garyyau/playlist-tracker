@@ -1,0 +1,12 @@
+@import './../_variables';
+
+.matxd-parser {
+	display: flex;
+
+	.matxd-parser-toggle {
+		margin: 0 20px 0 0;
+	}
+	.matxd-parser-text {
+		color: mui-color('black-alpha-54');
+	}
+}
