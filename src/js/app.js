@@ -11,7 +11,7 @@ app.controller('PlaylistController', require('./PlaylistController'));
 // Define the Services
 app.service('PlaylistItemFormService', require('./services/PlaylistItemFormService'));
 app.service('PlaylistService', require('./services/PlaylistService'));
-app.service('URLParserService', require('./services/URLParserService'));
+app.service('URLFactory', require('./services/URLFactory'));
 app.service('URLValidatorService', require('./services/URLValidatorService'));
 
 // Define the Directives

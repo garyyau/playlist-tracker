@@ -32,16 +32,4 @@ html, body {
 		display: inline;
 		margin-left: 15px;
 	}
-	.backdrop {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		background-image: url('../images/header-bg-left-render.png');
-		background-position: left top;
-		background-repeat: no-repeat;
-		pointer-events: none;
-	}
-
 }

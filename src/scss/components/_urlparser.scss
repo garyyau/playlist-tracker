@@ -17,6 +17,7 @@
 
 			&.selected, &:hover {
 				background-color: $mui-accent-color;
+				font-weight: bold;
 				cursor: pointer;
 			}
 		}

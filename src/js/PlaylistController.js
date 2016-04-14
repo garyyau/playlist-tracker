@@ -32,6 +32,12 @@ class PlaylistController {
 		this.visiblePlaylist = false;
 		this.visibleSeriesForm = true;
 	}
+	openNextURL(item) {
+		item.url = item.nextURL;
+		this.PlaylistService.checkForUpdates(() => {
+			chrome.tabs.create({ url: item.nextURL.stringify() });
+		});
+	}
 }
 
 PlaylistController.$inject = [

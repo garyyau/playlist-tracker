@@ -2,7 +2,7 @@ class PlaylistItemForm {
 	constructor(
 		PlaylistService,
 		PlaylistItemFormService,
-		URLParserService,
+		URLFactory,
 		URLValidatorService
 	) {
 		this.restrict = "E";
@@ -13,14 +13,24 @@ class PlaylistItemForm {
 
 		this.PlaylistService = PlaylistService;
 		this.PlaylistItemFormService = PlaylistItemFormService;
-		this.URLParserService = URLParserService;
+		this.URLFactory = URLFactory;
 		this.URLValidatorService = URLValidatorService;
 	}
 	setSeasonIndex(index) {
+		if (this.$scope.selectedSeasonIndex == index) {
+			this.$scope.selectedSeasonIndex = null;
+			return;
+		}
 		this.$scope.selectedSeasonIndex = index;
+		this.PlaylistItemFormService.data.seasonIndex = index;
 	}
 	setEpisodeIndex(index) {
+		if (this.$scope.selectedEpisodeIndex == index) {
+			this.$scope.selectedEpisodeIndex = null;
+			return;
+		}
 		this.$scope.selectedEpisodeIndex = index;
+		this.PlaylistItemFormService.data.episodeIndex = index;
 	}
 	clear() {
 		this.PlaylistItemFormService.clear();
@@ -47,13 +57,13 @@ class PlaylistItemForm {
 	static export(
 		PlaylistService,
 		PlaylistItemFormService,
-		URLParserService,
+		URLFactory,
 		URLValidatorService
 	) {
 		return new PlaylistItemForm(
 			PlaylistService,
 			PlaylistItemFormService,
-			URLParserService,
+			URLFactory,
 			URLValidatorService
 		);
 	}
@@ -61,7 +71,7 @@ class PlaylistItemForm {
 PlaylistItemForm.export.$inject = [
 	'PlaylistService',
 	'PlaylistItemFormService',
-	'URLParserService',
+	'URLFactory',
 	'URLValidatorService',
 ];
 

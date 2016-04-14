@@ -1,24 +1,9 @@
 var _ = require('lodash');
+var URL = require('./../models/URL');
 
 
-class URL {
-	constructor() {
-		this.components = [];
-		this.matches = [];
-	}
-	addComponent(component) {
-		this.components.push(component);
-	}
-	addMatch(component) {
-		this.matches.push(component);
-	}
-	isMatch(component) {
-		return _.includes(this.matches, component);
-	}
-}
-
-class URLParserService {
-	createURL(string) {
+class URLFactory {
+	createFromString(string) {
 		const regex = /(.+?)(\d+)/g;
 		const url = new URL();
 
@@ -40,6 +25,15 @@ class URLParserService {
 		}
 		return url;
 	}
+	createFromComponents(components) {
+		const url = new URL();
+		_.forEach(components, (component) => {
+			if (component) {
+				url.addComponent(component);
+			}
+		});
+		return url;
+	}
 }
 
-module.exports = URLParserService;
+module.exports = URLFactory;

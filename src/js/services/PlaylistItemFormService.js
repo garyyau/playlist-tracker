@@ -2,15 +2,15 @@ var _ = require('lodash');
 
 
 class PlaylistItemFormService {
-	constructor(URLParserService) {
+	constructor(URLFactory) {
 		this.data = {};
-		this.URLParserService = URLParserService;
+		this.URLFactory = URLFactory;
 	}
 	createURL(urlString) {
 		if (!urlString || urlString.length == 0) {
 			return;
 		}
-		this.data.url = this.URLParserService.createURL(urlString);
+		this.data.url = this.URLFactory.createFromString(urlString);
 	}
 	getValues() {
 		return this.data;
@@ -30,7 +30,7 @@ class PlaylistItemFormService {
 		this.data = {};
 	}
 }
-PlaylistItemFormService.$inject = ['URLParserService'];
+PlaylistItemFormService.$inject = ['URLFactory'];
 
 
 module.exports = PlaylistItemFormService;
