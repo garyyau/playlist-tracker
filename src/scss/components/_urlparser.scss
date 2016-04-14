@@ -2,11 +2,23 @@
 
 .matxd-parser {
 	display: flex;
+	margin: 5px 0 5px 5px;
 
 	.matxd-parser-toggle {
 		margin: 0 20px 0 0;
 	}
 	.matxd-parser-text {
-		color: mui-color('black-alpha-54');
+		overflow: hidden;
+		color: $mui-text-dark-secondary;
+		word-wrap: break-word;
+
+		.match {
+			background-color: $mui-accent-color-light;
+
+			&.selected, &:hover {
+				background-color: $mui-accent-color;
+				cursor: pointer;
+			}
+		}
 	}
 }

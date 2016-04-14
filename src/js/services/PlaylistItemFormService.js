@@ -3,40 +3,31 @@ var _ = require('lodash');
 
 class PlaylistItemFormService {
 	constructor(URLParserService) {
-		this.id = null;
-		this.name = null;
-		this.url = null;
-		this.urlString = null;
+		this.data = {};
 		this.URLParserService = URLParserService;
 	}
 	createURL(urlString) {
-		this.url = this.URLParserService.createURL(urlString);
+		if (!urlString || urlString.length == 0) {
+			return;
+		}
+		this.data.url = this.URLParserService.createURL(urlString);
 	}
 	getValues() {
-		let item = {};
-		_.forOwn(this, (value, key) => {
-			_.set(item, key, value);
-		});
-		return item;
+		return this.data;
 	}
 	setValues(item) {
+		this.reset();
 		_.forOwn(item, (value, key) => {
-			if (_.has(this, key)) {
-				_.set(this, key, value);
-			}
+			_.set(this.data, key, value);
 		});
 	}
 	clear() {
-		_.forOwn(this, (value, key) => {
-			if (key != 'id') {
-				_.set(this, key, null);
-			}
-		});
+		this.data = {
+			id: this.id,
+		};
 	}
 	reset() {
-		_.forOwn(this, (value, key) => {
-			_.set(this, key, null);
-		});
+		this.data = {};
 	}
 }
 PlaylistItemFormService.$inject = ['URLParserService'];

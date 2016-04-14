@@ -34,7 +34,7 @@ class URLParserService {
 			url.addComponent(match);
 			url.addMatch(match);
 		}
-		if (lastIndex < string.length - 1) {
+		if (string.length == 1 || lastIndex < string.length - 1) {
 			const remain = string.substring(lastIndex, string.length);
 			url.addComponent(remain);
 		}

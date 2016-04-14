@@ -1,22 +1,38 @@
 form.playlist-item-form
 	mui-input(
-		ng-model='PlaylistItemFormService.name',
+		ng-model='PlaylistItemFormService.data.name',
 		label='Name',
 		float-label,
 		required
 	)
 	mui-input(
-		ng-model='PlaylistItemFormService.urlString',
-		ng-change='PlaylistItemFormService.createURL(PlaylistItemFormService.urlString)'
+		ng-model='PlaylistItemFormService.data.urlString',
+		ng-change='PlaylistItemFormService.createURL(PlaylistItemFormService.data.urlString)'
 		label='URL',
 		float-label,
 		required
 	)
 	.matxd-parser
 		mui-checkbox.matxd-parser-toggle(ng-model='hasSeason', label='Season')
-		span.matxd-parser-text(ng-bind='PlaylistItemFormService.url', ng-if='hasSeason')
+		.matxd-parser-text(ng-if='hasSeason')
+			span(
+				ng-repeat='component in PlaylistItemFormService.data.url.components track by $index',
+				ng-class='{match: PlaylistItemFormService.data.url.isMatch(component), selected: selectedSeasonIndex == $index}',
+				ng-bind='component',
+				ng-click='setSeasonIndex($index)'
+			)
 
-	input(type='hidden', ng-model='PlaylistItemFormService.id')
+	.matxd-parser
+		mui-checkbox.matxd-parser-toggle(ng-model='hasEpisode', label='Episode')
+		.matxd-parser-text(ng-if='hasEpisode')
+			span(
+				ng-repeat='component in PlaylistItemFormService.data.url.components track by $index',
+				ng-class='{match: PlaylistItemFormService.data.url.isMatch(component), selected: selectedEpisodeIndex == $index}',
+				ng-bind='component',
+				ng-click='setEpisodeIndex($index)'
+			)
+
+	input(type='hidden', ng-model='PlaylistItemFormService.data.id')
 
 	.form-controls
 		mui-button(

@@ -49,14 +49,14 @@
 		overflow: hidden;
 
 		p.matxd-list-text-primary {
-			color: mui-color('black-alpha-87');
+			color: $mui-text-dark;
 			font-size: 16px;
 			line-height: 20px;
 		}
 		p {
 			overflow: hidden;
 			margin-bottom: 0px;
-			color: mui-color('black-alpha-54');
+			color: $mui-text-dark-secondary;
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			font-size: 14px;
